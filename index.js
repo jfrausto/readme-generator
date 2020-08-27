@@ -18,7 +18,16 @@ const questions = [
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  console.log(`${fileName} will be created with the title of ${data.title}`);
+  // invoke generate markdown function that returns the ES6+ string
+  fs.writeFile(fileName, generateMarkdown.generate(data), function (err) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("Success! No errors!");
+  });
+}
 // function to initialize program
 function init() {
   inquirer
@@ -71,7 +80,9 @@ function init() {
       },
     ])
     .then(function (data) {
-      console.log(data.title);
+      console.log("pass data to new function....");
+
+      writeToFile("README-gen.md", data);
     });
 }
 
