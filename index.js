@@ -1,6 +1,6 @@
-var generateMarkdown = require("./utils/generateMarkdown");
-var fs = require("fs");
-var inquirer = require("inquirer");
+const generateMarkdown = require("./utils/generateMarkdown");
+const fs = require("fs");
+const inquirer = require("inquirer");
 
 // array of questions for user
 // 0:title, 1:desc, 2:installation, 3:usage,
@@ -19,16 +19,17 @@ const questions = [
 
 // function to write README file
 function writeToFile(fileName, data) {
-  console.log(`${fileName} will be created with the title of ${data.title}`);
+  // console.log(`${fileName} will be created with the title of ${data.title}`);
   // invoke generate markdown function that returns the ES6+ string
   fs.writeFile(fileName, generateMarkdown.generate(data), function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log("Success! No errors!");
+    console.log("Success! README-gen.md created!");
   });
 }
 // function to initialize program
+// prompt the user with questions
 function init() {
   inquirer
     .prompt([
@@ -80,28 +81,27 @@ function init() {
       },
     ])
     .then(function (data) {
-      console.log("pass data to new function....");
+      // build badge cases; create new properties badge and badgeUrl
       switch (data.license) {
         case "MIT":
           data.badge =
             "[![License: MIT](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)";
-          data.badgeDescUrl = "https://opensource.org/licenses/MIT";
+          data.badgeUrl = "https://opensource.org/licenses/MIT";
           break;
         case "Apache 2.0":
           data.badge =
             "[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
-          data.badgeDescUrl = "https://opensource.org/licenses/Apache-2.0";
+          data.badgeUrl = "https://opensource.org/licenses/Apache-2.0";
           break;
         default:
           data.badge =
             "[![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)";
-          data.badgeDescUrl = "https://www.gnu.org/licenses/agpl-3.0.html";
+          data.badgeUrl = "https://www.gnu.org/licenses/agpl-3.0.html";
           break;
       }
-
+      // send the responses to be written
       writeToFile("README-gen.md", data);
     });
 }
-
 // function call to initialize program
 init();

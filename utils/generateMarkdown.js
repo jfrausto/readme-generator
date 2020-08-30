@@ -21,7 +21,7 @@ function generateMarkdown(data) {
   ${data.usage}
   ## License
 
-  This project is covered under the **${data.license}** license -- see more info [here](${data.badgeDescUrl}).
+  This project is covered under the **${data.license}** license -- see more info [here](${data.badgeUrl}).
   ## Contributing
 
   ${data.contributions}
