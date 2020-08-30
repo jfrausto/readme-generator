@@ -81,6 +81,23 @@ function init() {
     ])
     .then(function (data) {
       console.log("pass data to new function....");
+      switch (data.license) {
+        case "MIT":
+          data.badge =
+            "[![License: MIT](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)";
+          data.badgeDescUrl = "https://opensource.org/licenses/MIT";
+          break;
+        case "Apache 2.0":
+          data.badge =
+            "[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+          data.badgeDescUrl = "https://opensource.org/licenses/Apache-2.0";
+          break;
+        default:
+          data.badge =
+            "[![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)";
+          data.badgeDescUrl = "https://www.gnu.org/licenses/agpl-3.0.html";
+          break;
+      }
 
       writeToFile("README-gen.md", data);
     });
