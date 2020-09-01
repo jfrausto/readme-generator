@@ -1,4 +1,4 @@
-# readme-generator
+# Readme Generator
 
 [![License: MIT](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
@@ -43,4 +43,4 @@ Create a new branch and do a pull request, pending review.
 ## Questions
 
 - GitHub: [jfrausto](https://github.com/jfrausto)
-- If you have any further questions, you can reach me at jesse.@jesse.com\_
+- If you have any further questions, you can reach me at _jesse.fraust@gmail.com_
