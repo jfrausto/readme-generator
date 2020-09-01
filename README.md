@@ -32,6 +32,8 @@ node index.js
 
 Use index.js as the entry point. After answering the questions, you will be prompted with a success message indicating the presence of a new file in your working directory.
 
+![Prompts Example](/screenshots/readme-generator-prompts.PNG?raw=true "User Flow Sample")
+
 ## License
 
 This project is covered under the **MIT** license -- see more info [here](https://opensource.org/licenses/MIT).
